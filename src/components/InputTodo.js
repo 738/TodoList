@@ -16,6 +16,7 @@ class InputTodo extends Component {
 
         this._handleChange = this._handleChange.bind(this);
         this._handleClick = this._handleClick.bind(this);
+        this._handleKeyPress = this._handleKeyPress.bind(this);
     }
 
     _handleChange(e){
@@ -25,7 +26,7 @@ class InputTodo extends Component {
     }
 
     _handleClick(){
-      if(this.state.value == ""){
+      if(this.state.value === ""){
         alert("할 일을 입력하세요.");
         return;
       }
@@ -37,6 +38,12 @@ class InputTodo extends Component {
       this.setState({
         value: ""
       });
+    }
+
+    _handleKeyPress(e){
+      if(e.charCode == 13){
+        this._handleClick();
+      }
     }
 
 

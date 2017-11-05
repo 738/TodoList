@@ -3,11 +3,13 @@ import { PropTypes } from 'prop-types';
 
 const propTypes = {
   todos: PropTypes.array,
-  onToggle: PropTypes.func
+  onToggle: PropTypes.func,
+  onRemove: PropTypes.func
 };
 const defaultProps = {
   todos: [],
-  onToggle: () => {console.err("onToggle not defined");}
+  onToggle: () => {console.error("onToggle not defined");},
+  onRemove: () => {console.error("onRemove not defined");}
 };
 class TodoList extends Component {
     constructor(props) {
@@ -29,6 +31,7 @@ class TodoList extends Component {
 
     _handleRemove(key){
       this.props.onRemove(key);
+      console.log(key);
     }
 
 
@@ -59,7 +62,12 @@ class Todo extends Component {
     }
     return(
         <div onClick={this.props.onToggle}>
-          <li style={this.props.completed ? completedStyle : {} }>{this.props.text} <button onClick={this.props.onRemove}>X</button></li>
+          <li style={this.props.completed ? completedStyle : {} }>
+            {this.props.text}
+            <button onClick={this.props.onRemove}>
+              X
+            </button>
+          </li>
         </div>
     )
   }
