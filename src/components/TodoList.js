@@ -17,6 +17,7 @@ class TodoList extends Component {
         }
 
         this._handleToggle = this._handleToggle.bind(this);
+        this._handleRemove = this._handleRemove.bind(this);
     }
 
     _handleToggle(key){
@@ -25,6 +26,11 @@ class TodoList extends Component {
       });
       this.props.onToggle(key);
     }
+
+    _handleRemove(key){
+      this.props.onRemove(key);
+    }
+
 
     render() {
         return(
@@ -36,7 +42,7 @@ class TodoList extends Component {
                             completed={data.completed}
                             key={i}
                             onToggle={() => this._handleToggle(i)}
-
+                            onRemove={() => this._handleRemove(i)}
                           />);
                 })
               }
@@ -53,7 +59,7 @@ class Todo extends Component {
     }
     return(
         <div onClick={this.props.onToggle}>
-          <li style={this.props.completed ? completedStyle : {} }>{this.props.text} <button>X</button></li>
+          <li style={this.props.completed ? completedStyle : {} }>{this.props.text} <button onClick={this.props.onRemove}>X</button></li>
         </div>
     )
   }

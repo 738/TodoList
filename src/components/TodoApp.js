@@ -41,19 +41,26 @@ class TodoApp extends Component {
       });
     }
 
-    _handleRemove(){
-
+    //why not remove??????
+    _handleRemove(index){
+      this.setState({
+        todos: update(this.state.todos,
+          {
+            $splice:[[index, 1]]
+          }
+        )
+      });
     }
 
+    //toggle the completed value (true, false)
     _handleToggle(index){
-      let tmp = this.state.todos[index].completed;
       this.setState({
         todos: update(
           this.state.todos,
           {
             [index]:{
               completed: {
-                $set: !tmp
+                $set: !this.state.todos[index].completed
             }
           }
         })
@@ -65,7 +72,8 @@ class TodoApp extends Component {
             <div>
               <InputTodo onAdd={this._handleAdd} />
               <TodoList todos={this.state.todos}
-                        onToggle={this._handleToggle}/>
+                        onToggle={this._handleToggle}
+                        onRemove={this._handleRemove}/>
             </div>
         );
     }
