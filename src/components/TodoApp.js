@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import InputTodo from './InputTodo';
 import TodoList from './TodoList';
 import update from 'react-addons-update';
@@ -13,6 +14,7 @@ class TodoApp extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          selectedKey: -1,
           todos: [
             {
               text: "study javascript",
@@ -26,6 +28,7 @@ class TodoApp extends Component {
         }
         this._handleAdd = this._handleAdd.bind(this);
         this._handleRemove = this._handleRemove.bind(this);
+        this._handleToggle = this._handleToggle.bind(this);
     }
 
     _handleAdd(data){
@@ -36,18 +39,33 @@ class TodoApp extends Component {
           }
         )
       });
-      console.log(this.state.todos);
     }
 
     _handleRemove(){
 
     }
 
+    _handleToggle(index){
+      let tmp = this.state.todos[index].completed;
+      this.setState({
+        todos: update(
+          this.state.todos,
+          {
+            [index]:{
+              completed: {
+                $set: !tmp
+            }
+          }
+        })
+      });
+    }
+
     render() {
         return(
             <div>
-              <InputTodo onAdd={this._handleAdd}/>
-              <TodoList todos={this.state.todos} />
+              <InputTodo onAdd={this._handleAdd} />
+              <TodoList todos={this.state.todos}
+                        onToggle={this._handleToggle}/>
             </div>
         );
     }

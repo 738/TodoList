@@ -1,7 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 
 const propTypes = {
-
+  onAdd: PropTypes.func
 };
 const defaultProps = {
   onAdd: () => { console.error('onAdd not defined'); }

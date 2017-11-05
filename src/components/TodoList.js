@@ -1,14 +1,29 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 
 const propTypes = {
-
+  todos: PropTypes.array,
+  onToggle: PropTypes.func
 };
 const defaultProps = {
-
+  todos: [],
+  onToggle: () => {console.err("onToggle not defined");}
 };
 class TodoList extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+          selectedKey: -1
+        }
+
+        this._handleToggle = this._handleToggle.bind(this);
+    }
+
+    _handleToggle(key){
+      this.setState({
+        selectedKey: key
+      });
+      this.props.onToggle(key);
     }
 
     render() {
@@ -16,7 +31,13 @@ class TodoList extends Component {
             <ul>
               {
                 this.props.todos.map((data, i) => {
-                  return (<Todo text={data.text} completed={data.completed} key={i}/>);
+                  return (<Todo
+                            text={data.text}
+                            completed={data.completed}
+                            key={i}
+                            onToggle={() => this._handleToggle(i)}
+
+                          />);
                 })
               }
             </ul>
@@ -26,8 +47,14 @@ class TodoList extends Component {
 
 class Todo extends Component {
   render() {
+    const completedStyle={
+      textDecoration: "line-through",
+      color: "gray"
+    }
     return(
-        <li style={{textDecoration: this.props.completed ? "line-through" : "none"}}>{this.props.text}</li>
+        <div onClick={this.props.onToggle}>
+          <li style={this.props.completed ? completedStyle : {} }>{this.props.text} <button>X</button></li>
+        </div>
     )
   }
 }
