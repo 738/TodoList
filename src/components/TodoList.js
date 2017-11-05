@@ -9,25 +9,13 @@ const defaultProps = {
 class TodoList extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-          todos: [
-            {
-              text: "study javascript",
-              completed: false
-            },
-            {
-              text: "study C",
-              completed: true
-            }
-          ]
-        }
     }
 
     render() {
         return(
             <ul>
               {
-                this.state.todos.map((data, i) => {
+                this.props.todos.map((data, i) => {
                   return (<Todo text={data.text} completed={data.completed} key={i}/>);
                 })
               }

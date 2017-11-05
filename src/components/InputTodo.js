@@ -4,30 +4,41 @@ const propTypes = {
 
 };
 const defaultProps = {
-
+  onAdd: () => { console.error('onAdd not defined'); }
 };
 class InputTodo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          keyword: ""
+          value: ""
         };
 
         this._handleChange = this._handleChange.bind(this);
-        this._handleKeyPress = this._handleKeyPress.bind(this);
+        this._handleClick = this._handleClick.bind(this);
     }
 
     _handleChange(e){
       this.setState({
-        keyword: e.target.value
+        value: e.target.value
       });
     }
 
-    _handleKeyPress(e){
-      if(e.keyCode == 13){
-        console.log("enter is pressed");
+    _handleClick(){
+      if(this.state.value == ""){
+        alert("할 일을 입력하세요.");
+        return;
       }
+      const data = {
+        text: this.state.value,
+        completed: false
+      }
+      this.props.onAdd(data);
+      this.setState({
+        value: ""
+      });
     }
+
+
 
     render() {
         return(
@@ -39,6 +50,7 @@ class InputTodo extends Component {
                 onChange={this._handleChange}
                 onKeyPress={this._handleKeyPress}
               />
+            <button onClick={this._handleClick}>추가</button>
             </div>
         );
     }

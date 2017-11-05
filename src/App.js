@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import InputTodo from './components/InputTodo';
-import TodoList from './components/TodoList';
+import TodoApp from './components/TodoApp';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <InputTodo />
-        <TodoList />
+        <TodoApp />
       </div>
     );
   }
