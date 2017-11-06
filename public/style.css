@@ -1,0 +1,15 @@
+.todoList {
+  font-size: 40px;
+}
+
+.todo {
+  width: 80%;
+  background-color: skyblue;
+  margin: 20px;
+  padding: 30px;
+  display: flex;
+}
+
+.inputTodo {
+  margin: 20px;
+}

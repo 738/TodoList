@@ -21,7 +21,7 @@ class TodoList extends Component {
 
     render() {
         return(
-            <ul>
+            <ul class="todoList">
               {
                 this.props.todos.map((data, i) => {
                   return (<Todo
@@ -45,15 +45,15 @@ class Todo extends Component {
       color: "gray"
     }
     return(
-        <div>
+        <div class="todo z-depth-4">
           <div onClick={this.props.onToggle}>
             <li style={this.props.completed ? completedStyle : {} }>
               {this.props.text}
             </li>
           </div>
-          <button onClick={this.props.onRemove}>
-            X
-          </button>
+          <div>
+            <a class="waves-effect waves-light btn" onClick={this.props.onRemove}>X</a>
+          </div>
         </div>
     )
   }

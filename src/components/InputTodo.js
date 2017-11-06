@@ -48,15 +48,14 @@ class InputTodo extends Component {
 
     render() {
         return(
-            <div>
+            <div class="inputTodo">
               <input
                 type="text"
-                placeholder="할 일을 적으시오"
+                placeholder="할 일을 적으시오."
                 value={this.state.value}
                 onChange={this._handleChange}
                 onKeyPress={this._handleKeyPress}
               />
-            <button onClick={this._handleClick}>추가</button>
             </div>
         );
     }
