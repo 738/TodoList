@@ -46,8 +46,6 @@ class InputTodo extends Component {
       }
     }
 
-
-
     render() {
         return(
             <div>

@@ -31,6 +31,7 @@ class TodoApp extends Component {
         this._handleToggle = this._handleToggle.bind(this);
     }
 
+    //add the todo item
     _handleAdd(data){
       this.setState({
         todos: update(this.state.todos,
@@ -41,7 +42,7 @@ class TodoApp extends Component {
       });
     }
 
-    //why not remove??????
+    //remove the todo item
     _handleRemove(index){
       this.setState({
         todos: update(this.state.todos,
@@ -50,7 +51,6 @@ class TodoApp extends Component {
           }
         )
       });
-      console.log(this.state.todos);
     }
 
     //toggle the completed value (true, false)

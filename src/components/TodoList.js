@@ -19,8 +19,6 @@ class TodoList extends Component {
         }
     }
 
-
-
     render() {
         return(
             <ul>
