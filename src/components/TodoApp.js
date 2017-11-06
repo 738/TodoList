@@ -15,13 +15,12 @@ class TodoApp extends Component {
         super(props);
         this.state = {
           numOfTodo: 0,
-          todos: [
-
-          ]
+          todos: []
         }
         this._handleAdd = this._handleAdd.bind(this);
         this._handleRemove = this._handleRemove.bind(this);
         this._handleToggle = this._handleToggle.bind(this);
+        this._handleRemoveCompleted = this._handleRemoveCompleted.bind(this);
     }
 
     //add the todo item
@@ -32,6 +31,7 @@ class TodoApp extends Component {
             $push: [data]
           }
         ),
+        //남은 일의 개수 증가
         numOfTodo: this.state.numOfTodo + 1
       });
     }
@@ -45,6 +45,7 @@ class TodoApp extends Component {
             $splice: [[index, 1]]
           }
         ),
+        //남은 일의 개수 조정
         numOfTodo: tmp ? this.state.numOfTodo : this.state.numOfTodo - 1
       });
     }
@@ -63,8 +64,15 @@ class TodoApp extends Component {
               }
             }
         ),
+        //남은 일의 개수를 토글에 따라 증가하고 감소한다.
         numOfTodo: tmp ? this.state.numOfTodo + 1 : this.state.numOfTodo - 1
       });
+    }
+
+    _handleRemoveCompleted(){
+      for(let i=0; i<this.state.todos.length;i++){
+
+      }
     }
 
     render() {
@@ -74,6 +82,7 @@ class TodoApp extends Component {
               <TodoList todos={this.state.todos}
                         onToggle={this._handleToggle}
                         onRemove={this._handleRemove}
+                        onRemoveCompleted={this._handleRemoveCompleted}
                         numOfTodo={this.state.numOfTodo}/>
             </div>
         );

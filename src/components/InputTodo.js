@@ -30,9 +30,14 @@ class InputTodo extends Component {
         alert("할 일을 입력하세요.");
         return;
       }
+      //랜덤 색깔 부여
+      const color1 = Math.floor(Math.random()*55+200);
+      const color2 = Math.floor(Math.random()*55+200);
+      const color3 = Math.floor(Math.random()*55+200);
       const data = {
         text: this.state.value,
-        completed: false
+        completed: false,
+        color: `rgb(${color1},${color2},${color3})`
       }
       this.props.onAdd(data);
       this.setState({
