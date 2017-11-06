@@ -69,6 +69,7 @@ class TodoApp extends Component {
       });
     }
 
+    //완료된 일 모두 삭제
     _handleRemoveCompleted(){
       let arr = [];
       let finalArr = [];
@@ -76,6 +77,10 @@ class TodoApp extends Component {
         if(this.state.todos[i].completed){
           arr.push(i);
         }
+      }
+      if(arr.length === 0){
+        alert("완료된 일이 없습니다.");
+        return;
       }
       for(let i=0; i<arr.length;i++){
         finalArr.push([arr[i]-i,1]);
