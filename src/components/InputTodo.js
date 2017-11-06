@@ -41,7 +41,7 @@ class InputTodo extends Component {
     }
 
     _handleKeyPress(e){
-      if(e.charCode == 13){
+      if(e.charCode === 13){
         this._handleClick();
       }
     }

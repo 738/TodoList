@@ -15,24 +15,10 @@ class TodoList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          selectedKey: -1
+
         }
-
-        this._handleToggle = this._handleToggle.bind(this);
-        this._handleRemove = this._handleRemove.bind(this);
     }
 
-    _handleToggle(key){
-      this.setState({
-        selectedKey: key
-      });
-      this.props.onToggle(key);
-    }
-
-    _handleRemove(key){
-      this.props.onRemove(key);
-      console.log(key);
-    }
 
 
     render() {
@@ -44,8 +30,8 @@ class TodoList extends Component {
                             text={data.text}
                             completed={data.completed}
                             key={i}
-                            onToggle={() => this._handleToggle(i)}
-                            onRemove={() => this._handleRemove(i)}
+                            onToggle={() => this.props.onToggle(i)}
+                            onRemove={() => this.props.onRemove(i)}
                           />);
                 })
               }
@@ -61,13 +47,15 @@ class Todo extends Component {
       color: "gray"
     }
     return(
-        <div onClick={this.props.onToggle}>
-          <li style={this.props.completed ? completedStyle : {} }>
-            {this.props.text}
-            <button onClick={this.props.onRemove}>
-              X
-            </button>
-          </li>
+        <div>
+          <div onClick={this.props.onToggle}>
+            <li style={this.props.completed ? completedStyle : {} }>
+              {this.props.text}
+            </li>
+          </div>
+          <button onClick={this.props.onRemove}>
+            X
+          </button>
         </div>
     )
   }

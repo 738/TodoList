@@ -46,10 +46,11 @@ class TodoApp extends Component {
       this.setState({
         todos: update(this.state.todos,
           {
-            $splice:[[index, 1]]
+            $splice: [[index, 1]]
           }
         )
       });
+      console.log(this.state.todos);
     }
 
     //toggle the completed value (true, false)
@@ -57,10 +58,10 @@ class TodoApp extends Component {
       this.setState({
         todos: update(
           this.state.todos,
-          {
-            [index]:{
-              completed: {
-                $set: !this.state.todos[index].completed
+            {
+              [index]:{
+                completed: {
+                  $set: !this.state.todos[index].completed
             }
           }
         })
