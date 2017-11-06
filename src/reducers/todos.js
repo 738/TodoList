@@ -2,11 +2,11 @@ import * as types from '../actions/ActionTypes';
 import update from 'react-addons-update';
 
 const initialState = {
-  todos = [],
-  numOfTodo = 0
+  todos: [],
+  numOfTodo: 0
 };
 
-class todos(state = initialState, action){
+export default function todos(state = initialState, action){
   switch(action.type){
     case types.ADD_TODO:
       return {
@@ -27,7 +27,7 @@ class todos(state = initialState, action){
         ...state,
         todos: update(state.todos,
         {
-          [index]:{
+          [action.index]:{
             completed:{
               $set: !tmp
             }
@@ -36,14 +36,14 @@ class todos(state = initialState, action){
         numOfTodo: tmp ? state.numOfTodo + 1 : state.numOfTodo - 1
       }
     case types.REMOVE_TODO:
-      let tmp = state.todos[action.index].completed;
+      let tmp2 = state.todos[action.index].completed;
       return {
         ...state,
         todos: update(state.todos,
         {
           $splice: [[action.index, 1]]
         }),
-        numOfTodo: tmp ? state.numOfTodo : state.numOfTodo - 1
+        numOfTodo: tmp2 ? state.numOfTodo : state.numOfTodo - 1
       }
     case types.REMOVE_TODO_COMPLETED:
       let arr = [];

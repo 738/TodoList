@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
 import InputTodo from './InputTodo';
 import TodoList from './TodoList';
 import update from 'react-addons-update';
