@@ -27,8 +27,8 @@ class TodoList extends Component {
         return(
             <div>
               <span>할 일이 {this.props.numOfTodo}개 남았습니다.</span><br></br>
-              <a class="waves-effect waves-light btn" onClick={this.props.onRemoveCompleted}>완료된 일 모두 삭제</a>
-              <div class="todoList">
+              <a className="waves-effect waves-light btn" onClick={this.props.onRemoveCompleted}>완료된 일 모두 삭제</a>
+              <div className="todoList">
                 <ul>
                   {
                     this.props.todos.map((data, i) => {
@@ -56,14 +56,14 @@ class Todo extends Component {
       color: "gray"
     }
     return(
-        <div class="todo z-depth-4" style={{backgroundColor: this.props.color}}>
+        <div className="todo z-depth-4" style={{backgroundColor: this.props.color}}>
           <div onClick={this.props.onToggle}>
             <li style={this.props.completed ? completedStyle : {} }>
               {this.props.text}
             </li>
           </div>
           <div>
-            <a class="waves-effect waves-light btn" onClick={this.props.onRemove}>X</a>
+            <a className="waves-effect waves-light btn" onClick={this.props.onRemove}>X</a>
           </div>
         </div>
     )

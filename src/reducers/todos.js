@@ -9,13 +9,19 @@ const initialState = {
 export default function todos(state = initialState, action){
   switch(action.type){
     case types.ADD_TODO:
+      //랜덤 색깔 부여
+      const color1 = Math.floor(Math.random()*55+200);
+      const color2 = Math.floor(Math.random()*55+200);
+      const color3 = Math.floor(Math.random()*55+200);
+      const rgbcolor = `rgb(${color1},${color2},${color3})`
       return {
         ...state,
         todos: update(state.todos,
           {
             $push: [{
               text: action.text,
-              completed: false
+              completed: false,
+              color: rgbcolor
             }]
           }
         ),

@@ -15,7 +15,6 @@ class InputTodo extends Component {
         };
 
         this._handleChange = this._handleChange.bind(this);
-        this._handleClick = this._handleClick.bind(this);
         this._handleKeyPress = this._handleKeyPress.bind(this);
     }
 
@@ -25,35 +24,15 @@ class InputTodo extends Component {
       });
     }
 
-    _handleClick(){
-      if(this.state.value === ""){
-        alert("할 일을 입력하세요.");
-        return;
-      }
-      //랜덤 색깔 부여
-      const color1 = Math.floor(Math.random()*55+200);
-      const color2 = Math.floor(Math.random()*55+200);
-      const color3 = Math.floor(Math.random()*55+200);
-      const data = {
-        text: this.state.value,
-        completed: false,
-        color: `rgb(${color1},${color2},${color3})`
-      }
-      this.props.onAdd(data);
-      this.setState({
-        value: ""
-      });
-    }
-
     _handleKeyPress(e){
       if(e.charCode === 13){
-        this._handleClick();
+        this.props.onAdd(this.state.value);
       }
     }
 
     render() {
         return(
-            <div class="inputTodo">
+            <div className="inputTodo">
               <input
                 type="text"
                 placeholder="할 일을 적으시오."
