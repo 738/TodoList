@@ -1,4 +1,4 @@
-import * as types from './actionTypes';
+import * as types from './ActionTypes';
 
 export function addTodo(text){
   return {
