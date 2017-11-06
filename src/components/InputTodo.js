@@ -27,6 +27,9 @@ class InputTodo extends Component {
     _handleKeyPress(e){
       if(e.charCode === 13){
         this.props.onAdd(this.state.value);
+        this.setState({
+          value: ""
+        });
       }
     }
 
