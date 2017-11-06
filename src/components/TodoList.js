@@ -47,12 +47,18 @@ class TodoList extends Component {
 
 class Todo extends Component {
   render() {
-    const completedStyle={
+    const completedStyle = {
       textDecoration: "line-through",
       color: "gray"
     }
+    const color1 = Math.floor(Math.random()*55+200);
+    const color2 = Math.floor(Math.random()*55+200);
+    const color3 = Math.floor(Math.random()*55+200);
+    const randomColor = {
+        backgroundColor: `rgb(${color1},${color2},${color3})`
+    }
     return(
-        <div class="todo z-depth-4">
+        <div class="todo z-depth-4" style={randomColor}>
           <div onClick={this.props.onToggle}>
             <li style={this.props.completed ? completedStyle : {} }>
               {this.props.text}
