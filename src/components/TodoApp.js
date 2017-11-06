@@ -70,9 +70,24 @@ class TodoApp extends Component {
     }
 
     _handleRemoveCompleted(){
+      let arr = [];
+      let finalArr = [];
       for(let i=0; i<this.state.todos.length;i++){
-
+        if(this.state.todos[i].completed){
+          arr.push(i);
+        }
       }
+      for(let i=0; i<arr.length;i++){
+        finalArr.push([arr[i]-i,1]);
+      }
+      this.setState({
+        todos: update(
+          this.state.todos,
+          {
+            $splice: finalArr
+          }
+        )
+      });
     }
 
     render() {
