@@ -3,11 +3,12 @@
 }
 
 .todo {
-  width: 80%;
+  width: 50%;
   background-color: skyblue;
   margin: 20px;
   padding: 30px;
   display: flex;
+  justify-content: space-between;
 }
 
 .inputTodo {

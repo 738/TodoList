@@ -53,6 +53,7 @@ class InputTodo extends Component {
                 type="text"
                 placeholder="할 일을 적으시오."
                 value={this.state.value}
+                maxLength="30"
                 onChange={this._handleChange}
                 onKeyPress={this._handleKeyPress}
               />

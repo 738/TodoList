@@ -4,12 +4,14 @@ import { PropTypes } from 'prop-types';
 const propTypes = {
   todos: PropTypes.array,
   onToggle: PropTypes.func,
-  onRemove: PropTypes.func
+  onRemove: PropTypes.func,
+  numOfTodo: PropTypes.number
 };
 const defaultProps = {
   todos: [],
   onToggle: () => {console.error("onToggle not defined");},
-  onRemove: () => {console.error("onRemove not defined");}
+  onRemove: () => {console.error("onRemove not defined");},
+  numOfTodo: -1
 };
 class TodoList extends Component {
     constructor(props) {
@@ -21,19 +23,24 @@ class TodoList extends Component {
 
     render() {
         return(
-            <ul class="todoList">
-              {
-                this.props.todos.map((data, i) => {
-                  return (<Todo
-                            text={data.text}
-                            completed={data.completed}
-                            key={i}
-                            onToggle={() => this.props.onToggle(i)}
-                            onRemove={() => this.props.onRemove(i)}
-                          />);
-                })
-              }
-            </ul>
+            <div>
+              <span>할 일이 {this.props.numOfTodo}개 남았습니다.</span>
+            <div class="todoList">
+              <ul>
+                {
+                  this.props.todos.map((data, i) => {
+                    return (<Todo
+                              text={data.text}
+                              completed={data.completed}
+                              key={i}
+                              onToggle={() => this.props.onToggle(i)}
+                              onRemove={() => this.props.onRemove(i)}
+                            />);
+                  })
+                }
+              </ul>
+            </div>
+            </div>
         );
     }
 }

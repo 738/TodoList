@@ -14,16 +14,9 @@ class TodoApp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          selectedKey: -1,
+          numOfTodo: 0,
           todos: [
-            {
-              text: "study javascript",
-              completed: false
-            },
-            {
-              text: "study C",
-              completed: true
-            }
+
           ]
         }
         this._handleAdd = this._handleAdd.bind(this);
@@ -38,33 +31,39 @@ class TodoApp extends Component {
           {
             $push: [data]
           }
-        )
+        ),
+        numOfTodo: this.state.numOfTodo + 1
       });
     }
 
     //remove the todo item
     _handleRemove(index){
+      let tmp = this.state.todos[index].completed;
       this.setState({
         todos: update(this.state.todos,
           {
             $splice: [[index, 1]]
           }
-        )
+        ),
+        numOfTodo: tmp ? this.state.numOfTodo : this.state.numOfTodo - 1
       });
     }
 
     //toggle the completed value (true, false)
     _handleToggle(index){
+      let tmp = this.state.todos[index].completed;
       this.setState({
         todos: update(
           this.state.todos,
             {
               [index]:{
                 completed: {
-                  $set: !this.state.todos[index].completed
+                  $set: !tmp
+                }
+              }
             }
-          }
-        })
+        ),
+        numOfTodo: tmp ? this.state.numOfTodo + 1 : this.state.numOfTodo - 1
       });
     }
 
@@ -74,7 +73,8 @@ class TodoApp extends Component {
               <InputTodo onAdd={this._handleAdd} />
               <TodoList todos={this.state.todos}
                         onToggle={this._handleToggle}
-                        onRemove={this._handleRemove}/>
+                        onRemove={this._handleRemove}
+                        numOfTodo={this.state.numOfTodo}/>
             </div>
         );
     }
