@@ -37,12 +37,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(actions, dispatch);
-  /*return {
-    handleAdd: (text) => { dispatch(actions.addTodo(text)) },
-    handleToggle: (index) => { dispatch(actions.toggleTodo(index)) },
-    handleRemove: (index) => { dispatch(actions.removeTodo(index)) },
-    handleRemoveCompleted: () => { dispatch(actions.removeTodoCompleted()) }
-  };*/
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoApp);
