@@ -5,12 +5,6 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { bindActionCreators } from 'redux'
 
-const propTypes = {
-
-}
-const defaultProps = {
-
-};
 class TodoApp extends Component {
     constructor(props) {
         super(props);
