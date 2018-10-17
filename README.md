@@ -1,7 +1,7 @@
-My own Todo-List App
+# My own Todo-List App
 
-Using React.js, create-react-app, materialize...
+## Skill Stack
 
-+
-
-redux, react-redux
+- React
+- Redux
+- materialize(css)
